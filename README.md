@@ -1,2 +1,2 @@
 # Portfolio
-My Personal Portfolio Website, Make Sure You Check It...
+Update portfolio with responsive design and dark mode
