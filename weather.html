@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Real-time Weather Dashboard developed using JavaScript Fetch API, async/await and RESTful APIs.">
+
+    <meta name="author"
+          content="Harshvardhansinh Gohil">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <title>
+        Weather Dashboard | Harshvardhansinh Gohil
+    </title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- Skip Navigation -->
+
+    <a class="skip-link"
+       href="#main-content">
+
+        Skip to main content
+
+    </a>
+
+
+    <!-- Header -->
+
+    <header class="site-header">
+
+        <div class="container header-container">
+
+
+            <a class="logo"
+               href="index.html"
+               aria-label="Go to homepage">
+
+                HG
+
+            </a>
+
+
+            <nav class="main-navigation"
+                 aria-label="Primary navigation">
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="todo.html">
+                            To-Do App
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="weather.html"
+                           aria-current="page">
+                            Weather
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <button
+                class="theme-toggle"
+                type="button"
+                id="theme-toggle"
+                aria-label="Switch to dark mode">
+
+                <span id="theme-icon"
+                      aria-hidden="true">
+
+                    ☾
+
+                </span>
+
+                <span class="theme-text">
+                    Theme
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Main -->
+
+    <main id="main-content">
+
+
+        <!-- Page Hero -->
+
+        <section class="page-hero"
+                 aria-labelledby="weather-title">
+
+            <div class="container">
+
+                <p class="eyebrow">
+                    Internship Task 4
+                </p>
+
+                <h1 id="weather-title">
+                    Real-Time Weather Dashboard
+                </h1>
+
+                <p>
+
+                    Search for any city and view
+                    live weather information using
+                    JavaScript and RESTful APIs.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Weather Application -->
+
+        <section class="section"
+                 aria-labelledby="weather-app-title">
+
+            <div class="container">
+
+
+                <div class="weather-app">
+
+
+                    <!-- Search -->
+
+                    <div class="weather-search">
+
+                        <h2 id="weather-app-title">
+                            Check Current Weather
+                        </h2>
+
+
+                        <form id="weather-form">
+
+
+                            <label for="city-input">
+                                Enter city name
+                            </label>
+
+
+                            <div class="weather-search-box">
+
+                                <input
+                                    type="text"
+                                    id="city-input"
+                                    placeholder="Example: Ahmedabad"
+                                    autocomplete="off"
+                                    required>
+
+
+                                <button
+                                    type="submit"
+                                    class="button primary-button">
+
+                                    Search
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+
+                        <!-- Status -->
+
+                        <p
+                            id="weather-status"
+                            class="weather-status"
+                            role="status"
+                            aria-live="polite">
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Error -->
+
+                    <div
+                        id="weather-error"
+                        class="weather-error"
+                        role="alert"
+                        hidden>
+
+                    </div>
+
+
+
+                    <!-- Weather Result -->
+
+                    <div
+                        id="weather-result"
+                        class="weather-result"
+                        hidden>
+
+
+                        <!-- Location -->
+
+                        <div class="weather-location">
+
+                            <p class="card-label">
+                                CURRENT WEATHER
+                            </p>
+
+                            <h3 id="location-name">
+                                --
+                            </h3>
+
+                            <p id="location-details">
+                                --
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- Main Weather -->
+
+                        <div class="weather-main">
+
+
+                            <div class="weather-icon"
+                                 id="weather-icon"
+                                 aria-hidden="true">
+
+                                ☀️
+
+                            </div>
+
+
+                            <div>
+
+                                <p class="temperature">
+
+                                    <span
+                                        id="temperature">
+                                        --
+                                    </span>
+
+                                    <span>
+                                        °C
+                                    </span>
+
+                                </p>
+
+
+                                <p
+                                    id="weather-description"
+                                    class="weather-description">
+
+                                    --
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Weather Metrics -->
+
+                        <div class="weather-metrics">
+
+
+                            <article class="weather-card">
+
+                                <span
+                                    class="weather-card-icon"
+                                    aria-hidden="true">
+
+                                    💧
+
+                                </span>
+
+                                <p>
+                                    Humidity
+                                </p>
+
+                                <strong>
+
+                                    <span
+                                        id="humidity">
+                                        --
+                                    </span>
+
+                                    %
+
+                                </strong>
+
+                            </article>
+
+
+
+                            <article class="weather-card">
+
+                                <span
+                                    class="weather-card-icon"
+                                    aria-hidden="true">
+
+                                    💨
+
+                                </span>
+
+                                <p>
+                                    Wind Speed
+                                </p>
+
+                                <strong>
+
+                                    <span
+                                        id="wind-speed">
+                                        --
+                                    </span>
+
+                                    km/h
+
+                                </strong>
+
+                            </article>
+
+
+
+                            <article class="weather-card">
+
+                                <span
+                                    class="weather-card-icon"
+                                    aria-hidden="true">
+
+                                    🧭
+
+                                </span>
+
+                                <p>
+                                    Wind Direction
+                                </p>
+
+                                <strong>
+
+                                    <span
+                                        id="wind-direction">
+                                        --
+                                    </span>
+
+                                    °
+
+                                </strong>
+
+                            </article>
+
+
+
+                            <article class="weather-card">
+
+                                <span
+                                    class="weather-card-icon"
+                                    aria-hidden="true">
+
+                                    🌡️
+
+                                </span>
+
+                                <p>
+                                    Feels Like
+                                </p>
+
+                                <strong>
+
+                                    <span
+                                        id="feels-like">
+                                        --
+                                    </span>
+
+                                    °C
+
+                                </strong>
+
+                            </article>
+
+                        </div>
+
+
+
+                        <!-- Update Time -->
+
+                        <p
+                            id="weather-time"
+                            class="weather-time">
+
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <p>
+
+                &copy; 2026
+                Harshvardhansinh Gohil.
+
+            </p>
+
+
+            <nav aria-label="Footer navigation">
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Common JavaScript -->
+
+    <script src="script.js"></script>
+
+
+    <!-- Weather JavaScript -->
+
+    <script src="weather.js"></script>
+
+</body>
+
+</html>

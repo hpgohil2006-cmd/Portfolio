@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Interactive To-Do List application developed by Harshvardhansinh Gohil using JavaScript DOM manipulation and localStorage.">
+
+    <meta name="author"
+          content="Harshvardhansinh Gohil">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <title>
+        To-Do App | Harshvardhansinh Gohil
+    </title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- Skip Navigation -->
+
+    <a class="skip-link"
+       href="#main-content">
+
+        Skip to main content
+
+    </a>
+
+
+    <!-- Header -->
+
+    <header class="site-header">
+
+        <div class="container header-container">
+
+
+            <a class="logo"
+               href="index.html"
+               aria-label="Go to homepage">
+
+                HG
+
+            </a>
+
+
+            <nav class="main-navigation"
+                 aria-label="Primary navigation">
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="todo.html"
+                           aria-current="page">
+                            To-Do App
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- Theme Button -->
+
+            <button
+                class="theme-toggle"
+                type="button"
+                id="theme-toggle"
+                aria-label="Switch to dark mode">
+
+                <span id="theme-icon"
+                      aria-hidden="true">
+
+                    ☾
+
+                </span>
+
+                <span class="theme-text">
+                    Theme
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Main -->
+
+    <main id="main-content">
+
+
+        <section class="page-hero"
+                 aria-labelledby="todo-title">
+
+            <div class="container">
+
+                <p class="eyebrow">
+                    To-Do List App
+                </p>
+
+
+                <h1 id="todo-title">
+                     To-Do List
+                </h1>
+
+
+                <p>
+
+                    A state-driven task management application
+                    using JavaScript DOM manipulation,
+                    CRUD operations and localStorage.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Todo Application -->
+
+        <section class="section"
+                 aria-labelledby="todo-app-title">
+
+            <div class="container">
+
+
+                <div class="todo-app">
+
+
+                    <header class="todo-header">
+
+                        <div>
+
+                            <span class="card-label">
+                                TASK MANAGEMENT
+                            </span>
+
+                            <h2 id="todo-app-title">
+                                My Tasks
+                            </h2>
+
+                        </div>
+
+
+                        <div
+                            class="task-counter"
+                            aria-live="polite">
+
+                            <strong id="task-count">
+                                0
+                            </strong>
+
+                            <span>
+                                Tasks
+                            </span>
+
+                        </div>
+
+                    </header>
+
+
+
+                    <!-- Add Task -->
+
+                    <form id="todo-form"
+                          class="todo-form">
+
+
+                        <label for="todo-input"
+                               class="visually-hidden">
+
+                            Enter a new task
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="todo-input"
+                            placeholder="Enter a new task..."
+                            autocomplete="off"
+                            required>
+
+
+                        <button
+                            type="submit"
+                            class="button primary-button">
+
+                            Add Task
+
+                        </button>
+
+                    </form>
+
+
+
+                    <!-- Filters -->
+
+                    <div class="todo-controls"
+                         aria-label="Task filters">
+
+
+                        <div
+                            class="todo-filters"
+                            role="group"
+                            aria-label="Filter tasks">
+
+
+                            <button
+                                type="button"
+                                class="filter-button active"
+                                data-filter="all">
+
+                                All
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="filter-button"
+                                data-filter="active">
+
+                                Active
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="filter-button"
+                                data-filter="completed">
+
+                                Completed
+
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="clear-completed"
+                            class="clear-button">
+
+                            Clear Completed
+
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- Task List -->
+
+                    <ul
+                        id="todo-list"
+                        class="todo-list"
+                        aria-live="polite"
+                        aria-label="Task list">
+
+                    </ul>
+
+
+
+                    <!-- Empty State -->
+
+                    <div
+                        id="empty-state"
+                        class="empty-state">
+
+                        <span
+                            aria-hidden="true">
+
+                            ✓
+
+                        </span>
+
+                        <h3>
+                            No tasks found
+                        </h3>
+
+                        <p>
+                            Add a task to get started.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+
+            <p>
+
+                &copy; 2026
+                Harshvardhansinh Gohil.
+
+            </p>
+
+
+            <nav aria-label="Footer navigation">
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="projects.html">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Common JavaScript -->
+
+    <script src="script.js"></script>
+
+
+    <!-- To-Do JavaScript -->
+
+    <script src="todo.js"></script>
+
+</body>
+
+</html>
